@@ -25,8 +25,8 @@ $$
 
 * **Result:** This conditional Monte Carlo approach completely removes the discretization bias and significantly reduces the variance, yielding the exact continuous price even with large time steps $\Delta$.
 
-*(Insert image of Price vs. Delta showing the classic MC bias vs the flat Brownian Bridge line here)*
-`![Price vs Delta](path/to/your/delta_graph.png)`
+
+![Price vs Delta](DO_price_comparison_delta.png)
 
 ### 2. The Failure of Antithetic Variates on Barrier Options
 Antithetic variates are implemented to reduce variance by generating negatively correlated path pairs ($+Z$ and $-Z$).
@@ -52,7 +52,7 @@ Where $\beta^*$ is the optimal correlation coefficient calculated empirically du
     * When $B$ is closer to the strike $K$, the correlation breaks down due to frequent knock-outs, and the standard deviation (STD) forms a distinct bell-curve peak, highlighting the limitations of the control variate.
 
 *(Insert image of the STD vs Barrier Level showing the bell curve here)*
-`![STD vs Barrier](path/to/your/std_barrier_graph.png)`
+`![STD vs Barrier](data_.png)`
 
 ## Results & Visualizations
 
