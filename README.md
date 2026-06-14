@@ -51,26 +51,41 @@ Where $\beta^*$ is the optimal correlation coefficient calculated empirically du
     * When $B$ is low, the DO Put behaves similarly to the European Put ($\rho \to 1$), resulting in massive variance reduction.
     * When $B$ is closer to the strike $K$, the correlation breaks down due to frequent knock-outs, and the standard deviation (STD) forms a distinct bell-curve peak, highlighting the limitations of the control variate.
 
-*(Insert image of the STD vs Barrier Level showing the bell curve here)*
-`![STD vs Barrier](data_.png)`
+![STD vs Barrier](DI_STD_against_B.png)
 
 ## Results & Visualizations
 
 ### Vega Sensitivity (Price vs. Volatility)
 Unlike vanilla options which are strictly Long Vega, the Down & Out Put exhibits a distinct asymmetric bell-curve relationship with volatility. As $\sigma$ grows excessively large, the probability of hitting the knock-out barrier approaches 100%, causing the option's value to collapse toward zero.
-`![Price vs Volatility](path/to/your/volatility_graph.png)`
+![Price vs Volatility](DO_sensibility_sigma.png)
 
 ## Code Architecture
 The project is built in C++ for computational efficiency, with Python used for data visualization.
 * `main.cpp`: Entry point executing the simulations and outputting results.
-* `EuropeanPut.cpp` / `DownAndOut.cpp` / `DownAndIn.cpp`: Product-specific pricing engines implementing the Monte Carlo loops and payoff logic.
+* `eur_put.cpp` / `barrier_down_out.cpp` / `barrier_down_in.cpp`: Product-specific pricing engines implementing the Monte Carlo loops and payoff logic.
 * `random.cpp`: Uniform and Normal random number generators.
-* `export_csv.hpp`: Utility to export simulation results (prices, variances, confidence intervals) for data analysis.
-* `plot.py`: Python script utilizing `matplotlib` to generate the quantitative visualizations.
+* `export_to_plot.hpp`: Utility to export simulation results (prices, variances, confidence intervals) for data analysis.
+* `plot_graph.py`: Python script utilizing `matplotlib` to generate the quantitative visualizations.
 
 ## Compilation & Execution
+
+### Prerequisites
+The plotting script requires a standard Python environment with the following scientific computing libraries:
+* `numpy`
+* `matplotlib`
+* `pandas`
+
+You can install them via pip:
 ```bash
-# Example
-g++ -O3 main.cpp EuropeanPut.cpp DownAndOut.cpp random.cpp -o pricer
-./pricer
-python plot.py
+pip install numpy matplotlib pandas
+```
+### Running the project
+```bash
+# 1. Compile the C++ pricing engine
+make
+
+# 2. Run the simulations (exports data to CSV files)
+./main
+
+# 3. Generate the quantitative plots
+python plot_graph.py
