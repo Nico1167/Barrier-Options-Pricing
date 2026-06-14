@@ -11,6 +11,19 @@ The pricing engine covers the following instruments under the risk-neutral measu
 * **Down & Out Put:** A barrier option that becomes worthless (knocked-out) if the underlying asset price falls below a predefined barrier $B$ prior to maturity $T$.
 * **Down & In Put:** A barrier option that only becomes active (knocked-in) if the underlying asset price falls below $B$ prior to maturity $T$.
 
+## Model Parameters
+The baseline simulations and baseline prices are computed using the following reference parameters, unless stated otherwise (e.g., when graphing sensitivities across varying barriers or volatilities):
+
+| Parameter | Symbol | Baseline Value |
+| :--- | :---: | :---: |
+| **Initial Asset Price** | $S_0$ | $1.0$ |
+| **Strike Price** | $K$ | $1.0$ |
+| **Time to Maturity** | $T$ | $2.0$ (years) |
+| **Barrier Level** | $B$ | $0.7$ |
+| **Risk-Free Interest Rate** | $r$ | $0.015$ |
+| **Volatility** | $\sigma$ | $0.15$ |
+| **Number of MC Paths** | $N$ | $10,000$ |
+
 ## Quantitative Analysis & Variance Reduction
 
 ### 1. The Discretization Bias & The Brownian Bridge
